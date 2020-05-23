@@ -3,7 +3,7 @@
 import sys
 import re
 import opencc
-from pypinyin import lazy_pinyin
+
 converter = opencc.OpenCC('s2t.json')
 
 FILE = sys.argv[1]
@@ -16,11 +16,6 @@ with open(FILE) as f:
     for line in f:
         line = line.rstrip("\n")
         if not HANZI_RE.match(line):
-            continue
-
-        pinyin = "'".join(lazy_pinyin(line))
-        if pinyin == line:
-            print("Failed to convert, ignoring:", pinyin, file=sys.stderr)
             continue
 
         print(converter.convert(line))
