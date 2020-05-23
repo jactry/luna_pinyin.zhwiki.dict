@@ -2,7 +2,7 @@ FILENAME=zhwiki-20200501-all-titles-in-ns0
 
 all: build
 
-build: zhwiki.dict
+build: luna_pinyin.zhwiki.dict.yaml
 
 download: $(FILENAME).gz
 
@@ -12,11 +12,5 @@ $(FILENAME).gz:
 $(FILENAME): $(FILENAME).gz
 	gzip -k -d $(FILENAME).gz
 
-zhwiki.raw: $(FILENAME)
-	./convert.py $(FILENAME) > zhwiki.raw
-
-zhwiki.dict: zhwiki.raw
-	libime_pinyindict zhwiki.raw zhwiki.dict
-
-install: zhwiki.dict
-	install -Dm644 zhwiki.dict -t $(DESTDIR)/usr/share/fcitx5/pinyin/dictionaries/
+luna_pinyin.zhwiki.dict.yaml: $(FILENAME)
+	./convert.py $(FILENAME) > luna_pinyin.zhwiki.dict.yaml
