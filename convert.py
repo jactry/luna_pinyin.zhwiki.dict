@@ -18,6 +18,10 @@ with open(FILE) as f:
         if not HANZI_RE.match(line):
             continue
 
+        # Skip list page.
+        if line.endswith('\u5217\u8868'):
+            continue
+
         print(converter.convert(line))
         count += 1
         if count % 1000 == 0:
