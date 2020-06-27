@@ -13,5 +13,11 @@ $(FILENAME).gz:
 $(FILENAME): $(FILENAME).gz
 	gzip -k -d $(FILENAME).gz
 
-luna_pinyin.zhwiki.dict.yaml: $(FILENAME)
-	./convert.py $(FILENAME) $(VERSION) > luna_pinyin.zhwiki.dict.yaml
+web-slang.source:
+	./zhwiki-web-slang.py > web-slang.source
+
+zhwiki.source: $(FILENAME) web-slang.source
+	cat $(FILENAME) web-slang.source > zhwiki.source
+
+luna_pinyin.zhwiki.dict.yaml: zhwiki.source
+	./convert.py zhwiki.source $(VERSION) > luna_pinyin.zhwiki.dict.yaml
