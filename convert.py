@@ -7,9 +7,10 @@ import opencc
 converter = opencc.OpenCC('s2t.json')
 
 FILE = sys.argv[1]
+VERSION = sys.argv[2]
 
 HANZI_RE = re.compile('^[\u4e00-\u9fa5]+$')
-YAML_HEADER = "# encoding: utf-8\n\n---\nname: luna_pinyin.zhwiki\nversion: \"2020.05.29\"\nsort: by_weight\nuse_preset_vocabulary: true\n...\n"
+YAML_HEADER = "# encoding: utf-8\n\n---\nname: luna_pinyin.zhwiki\nversion: \"%s\"\nsort: by_weight\nuse_preset_vocabulary: true\n...\n" % (VERSION)
 print(YAML_HEADER)
 count = 0
 with open(FILE) as f:
