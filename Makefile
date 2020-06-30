@@ -20,4 +20,4 @@ zhwiki.source: $(FILENAME) web-slang.source
 	cat $(FILENAME) web-slang.source > zhwiki.source
 
 luna_pinyin.zhwiki.dict.yaml: zhwiki.source
-	./convert.py zhwiki.source $(VERSION) > luna_pinyin.zhwiki.dict.yaml
+	./convert.py zhwiki.source $(VERSION) luna_pinyin.zhwiki.dict.yaml
