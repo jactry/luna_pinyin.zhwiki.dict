@@ -1,4 +1,4 @@
-VERSION=20200701
+VERSION=20200801
 FILENAME=zhwiki-$(VERSION)-all-titles-in-ns0
 
 all: build
